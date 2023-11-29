@@ -20,7 +20,7 @@ installGlobals();
 function addLoggingToBuild(build) {
   for (const [id, route] of Object.entries(build.routes)) {
     if (route.module.loader) {
-      addLoggingToDataFunc(
+      route.module.loader = addLoggingToDataFunc(
         id,
         "loader",
         route.module.loader,
@@ -28,10 +28,10 @@ function addLoggingToBuild(build) {
       );
     }
     if (route.module.action) {
-      addLoggingToDataFunc(
+      route.module.action = addLoggingToDataFunc(
         id,
         "action",
-        route.module.loader,
+        route.module.action,
         route.module.logging
       );
     }
